@@ -89,16 +89,9 @@ check-sh-formatting:
     RUN ./ci/check-sh-formatting.sh
 
 
-ubuntu-base:
-    FROM ubuntu:22.04
-	# https://askubuntu.com/questions/462690/what-does-apt-get-fix-missing-do-and-when-is-it-useful
-    RUN apt-get update --fix-missing
-
-
 yaml-formatting-base:
-    FROM +ubuntu-base
-    RUN apt-get install wget -y
-	RUN wget https://github.com/mikefarah/yq/releases/download/v4.34.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+    FROM golang
+	RUN go install github.com/google/yamlfmt/cmd/yamlfmt@v0.9.0
     DO +COPY_CI_DATA
 
 
@@ -138,12 +131,19 @@ fix-formatting:
     BUILD +fix-sh-formatting
     BUILD +fix-yaml-formatting
 
+
 go-linting:
     FROM +golang-base
     RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.0
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/go-linting.sh
+
+
+ubuntu-base:
+    FROM ubuntu:22.04
+    # https://askubuntu.com/questions/462690/what-does-apt-get-fix-missing-do-and-when-is-it-useful
+    RUN apt-get update --fix-missing
 
 
 sh-linting:
