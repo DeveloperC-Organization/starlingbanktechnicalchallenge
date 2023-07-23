@@ -92,6 +92,7 @@ check-sh-formatting:
 yaml-formatting-base:
     FROM golang
 	RUN go install github.com/google/yamlfmt/cmd/yamlfmt@v0.9.0
+    COPY ".yamlfmt" ".yamlfmt"
     DO +COPY_CI_DATA
 
 

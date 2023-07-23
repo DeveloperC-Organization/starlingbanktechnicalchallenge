@@ -1,8 +1,11 @@
 name: Continuous Integration (CI)
+
 on: pull_request
+
 env:
   # Forcing Earthly to use colours, to make reading output easier.
   FORCE_COLOR: 1
+
 jobs:
   clean-git-history-checking:
     runs-on: ubuntu-latest

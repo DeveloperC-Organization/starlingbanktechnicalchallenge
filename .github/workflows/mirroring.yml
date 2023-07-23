@@ -1,4 +1,5 @@
 name: Mirroring
+
 on:
   # Mirroring after releasing, so tags are pushed.
   workflow_run:
@@ -6,6 +7,7 @@ on:
     # Only mirroring on the default branch, otherwise dead branches are pushed and never cleaned up.
     branches: [main]
     types: [completed]
+
 jobs:
   GitLab:
     runs-on: ubuntu-latest
