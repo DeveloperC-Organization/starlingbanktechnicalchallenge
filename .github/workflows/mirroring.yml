@@ -1,22 +1,14 @@
 name: Mirroring
 
-on:
-  # Mirroring after releasing, so tags are pushed.
-  workflow_run:
-    workflows: ["Releasing"]
-    # Only mirroring on the default branch, otherwise dead branches are pushed and never cleaned up.
-    branches: [main]
-    types: [completed]
+on: [push, delete]
 
 jobs:
   GitLab:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code.
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        run: git clone --mirror "https://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_WORKSPACE}"
+      - name: Getting GitLab repository.
+        run: echo "REPOSITORY_NAME=$(echo "${GITHUB_REPOSITORY}" | sed "s|^${GITHUB_REPOSITORY_OWNER}/||g")" >> "${GITHUB_ENV}"
       - name: Mirroring.
-        run: ./ci/mirroring.sh
-        env:
-          GITLAB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}
+        run: git push --mirror "https://oauth2:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.com/DeveloperC/${REPOSITORY_NAME}"
