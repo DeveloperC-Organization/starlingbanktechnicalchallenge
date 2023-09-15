@@ -7,7 +7,8 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  Linting:
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -19,8 +20,8 @@ jobs:
           fetch-depth: 0
       - name: Linting commits.
         run: earthly --ci +conventional-commits-linting --from_reference "origin/${{ github.base_ref }}"
-  Next-Version:
-    name: Next Version
+  check-next-version:
+    name: Check Next Version
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -31,4 +32,4 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Checking expected vs current version.
-        run: earthly --ci +conventional-commits-next-version-checking --from_reference "origin/${{ github.base_ref }}"
+        run: earthly --ci +check-conventional-commits-next-version --from_reference "origin/${{ github.base_ref }}"
