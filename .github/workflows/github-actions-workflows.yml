@@ -7,12 +7,13 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  Linting:
+  check-linting:
+    name: Check Linting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Lint GitHub Actions Workflows.
-        run: earthly +github-actions-workflows-linting
+      - name: Check GitHub Actions workflows linting.
+        run: earthly +check-github-actions-workflows-linting

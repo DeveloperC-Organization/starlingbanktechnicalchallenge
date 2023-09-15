@@ -133,12 +133,12 @@ fix-formatting:
     BUILD +fix-yaml-formatting
 
 
-go-linting:
+check-go-linting:
     FROM +golang-base
     RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.0
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/go-linting.sh
+    RUN ./ci/check-go-linting.sh
 
 
 ubuntu-base:
@@ -147,24 +147,24 @@ ubuntu-base:
     RUN apt-get update --fix-missing
 
 
-sh-linting:
+check-sh-linting:
     FROM +ubuntu-base
     RUN apt-get install shellcheck -y
     DO +COPY_CI_DATA
-    RUN ./ci/sh-linting.sh
+    RUN ./ci/check-sh-linting.sh
 
 
-github-actions-workflows-linting:
+check-github-actions-workflows-linting:
     FROM +golang-base
     RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.24
     DO +COPY_METADATA
-    RUN ./ci/github-actions-workflows-linting.sh
+    RUN ./ci/check-github-actions-workflows-linting.sh
 
 
-linting:
-    BUILD +go-linting
-    BUILD +sh-linting
-    BUILD +github-actions-workflows-linting
+check-linting:
+    BUILD +check-go-linting
+    BUILD +check-sh-linting
+    BUILD +check-github-actions-workflows-linting
 
 
 check-module-tidying:
