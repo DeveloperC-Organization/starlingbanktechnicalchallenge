@@ -34,12 +34,12 @@ conventional-commits-linting:
     RUN ./ci/conventional-commits-linting.sh --from-reference "${from_reference}"
 
 
-conventional-commits-next-version-checking:
+check-conventional-commits-next-version:
     FROM +rust-base
     RUN cargo install conventional_commits_next_version --version 6.0.0
     DO +COPY_METADATA
     ARG from_reference="origin/HEAD"
-    RUN ./ci/conventional-commits-next-version-checking.sh --from-reference "${from_reference}"
+    RUN ./ci/check-conventional-commits-next-version.sh --from-reference "${from_reference}"
 
 
 INSTALL_DEPENDENCIES:
