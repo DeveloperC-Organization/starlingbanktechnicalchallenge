@@ -7,7 +7,8 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  clean-git-history-checking:
+  check-clean-git-history:
+    name: Check Clean Git History
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -17,8 +18,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Check history.
-        run: earthly --ci +clean-git-history-checking --from_reference "origin/${{ github.base_ref }}"
+      - name: Check clean Git history.
+        run: earthly --ci +check-clean-git-history --from_reference "origin/${{ github.base_ref }}"
   go-formatting:
     runs-on: ubuntu-latest
     steps:
