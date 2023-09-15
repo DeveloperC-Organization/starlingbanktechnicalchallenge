@@ -31,8 +31,7 @@ This amount should then be transferred into a savings goal, helping the customer
   * [Commands](#commands)
     * [Check Formatting](#check-formatting)
     * [Fix Formatting](#fix-formatting)
-    * [Linting](#linting)
-    * [Linting](#linting)
+    * [Check Linting](#check-linting)
     * [Check Module Tidying](#check-module-tidying)
     * [Fix Module Tidying](#fix-module-tidying)
     * [Compiling](#compiling)
@@ -157,11 +156,11 @@ You can fix the formatting of the source code by running the command.
 earthly +fix-formatting
 ```
 
-#### Linting
-You can lint the source code by running the command.
+#### Check Linting
+You can check the source code passes all linting by running the command.
 
 ```sh
-earthly +linting
+earthly +check-linting
 ```
 
 #### Check Module Tidying
