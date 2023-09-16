@@ -34,8 +34,8 @@ This amount should then be transferred into a savings goal, helping the customer
     * [Check Linting](#check-linting)
     * [Check Module Tidying](#check-module-tidying)
     * [Fix Module Tidying](#fix-module-tidying)
-    * [Compiling](#compiling)
-    * [Unit Testing](#unit-testing)
+    * [Compile](#compile)
+    * [Unit Test](#unit-test)
 
 ## Usage
 To use this tool you first of all want to compile Go source code to a binary, see [setup](#setup) and [compiling](#compiling) on details to compile the binary.
@@ -177,7 +177,7 @@ You can fix missing or redundant module requirements by running the command.
 earthly +fix-module-tidying
 ```
 
-#### Compiling
+#### Compile
 You can compile the source code into a binary for an architecture by running the command.
 
 ```sh
@@ -192,9 +192,9 @@ The available architectures are `linux-amd64` and `darwin-amd64`.
 earthly +compile-linux-amd64
 ```
 
-#### Unit Testing
+#### Unit Test
 You can run all the unit tests by running the command.
 
 ```sh
-earthly +unit-testing
+earthly +unit-test
 ```
