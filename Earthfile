@@ -183,20 +183,20 @@ fix-module-tidying:
     SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
 
-compiling-linux-amd64:
+compile-linux-amd64:
     FROM +golang-base
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/compiling.sh
+    RUN ./ci/compile.sh
     DO +SAVE_OUTPUT
 
 
-compiling-darwin-amd64:
+compile-darwin-amd64:
     FROM +golang-base
     ENV GOOS=darwin
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/compiling.sh
+    RUN ./ci/compile.sh
     DO +SAVE_OUTPUT
 
 
