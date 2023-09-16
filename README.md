@@ -32,8 +32,8 @@ This amount should then be transferred into a savings goal, helping the customer
     * [Check Formatting](#check-formatting)
     * [Fix Formatting](#fix-formatting)
     * [Check Linting](#check-linting)
-    * [Check Module Tidying](#check-module-tidying)
-    * [Fix Module Tidying](#fix-module-tidying)
+    * [Check Modules](#check-modules)
+    * [Fix Modules](#fix-modules)
     * [Compile](#compile)
     * [Unit Test](#unit-test)
 
@@ -163,18 +163,18 @@ You can check the source code passes all linting by running the command.
 earthly +check-linting
 ```
 
-#### Check Module Tidying
-You can check there are no missing or redundant module requirements by running the command.
+#### Check Modules
+You can check there are no missing or redundant modules by running the command.
 
 ```sh
-earthly +check-module-tidying
+earthly +check-modules
 ```
 
-#### Fix Module Tidying
+#### Fix Modules
 You can fix missing or redundant module requirements by running the command.
 
 ```sh
-earthly +fix-module-tidying
+earthly +fix-modules
 ```
 
 #### Compile

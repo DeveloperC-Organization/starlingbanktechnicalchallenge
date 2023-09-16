@@ -167,18 +167,18 @@ check-linting:
     BUILD +check-github-actions-workflows-linting
 
 
-check-module-tidying:
+check-modules:
     FROM +golang-base
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/check-module-tidying.sh
+    RUN ./ci/check-modules.sh
 
 
-fix-module-tidying:
+fix-modules:
     FROM +golang-base
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/fix-module-tidying.sh
+    RUN ./ci/fix-modules.sh
     SAVE ARTIFACT "go.mod" AS LOCAL "go.mod"
     SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
