@@ -7,8 +7,8 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  check-clean-git-history:
-    name: Check Clean Git History
+  clean-git-history:
+    name: Clean Git History
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -20,8 +20,8 @@ jobs:
           fetch-depth: 0
       - name: Check clean Git history.
         run: earthly --ci +check-clean-git-history --from_reference "origin/${{ github.base_ref }}"
-  check-go-formatting:
-    name: Check Go Formatting
+  go-formatting:
+    name: Go Formatting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -30,8 +30,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Check formatting.
         run: earthly --ci +check-go-formatting
-  check-sh-formatting:
-    name: Check Sh Formatting
+  sh-formatting:
+    name: Sh Formatting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -40,8 +40,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Check formatting.
         run: earthly --ci +check-sh-formatting
-  check-yaml-formatting:
-    name: Check YAML Formatting
+  yaml-formatting:
+    name: YAML Formatting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -50,8 +50,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Check formatting.
         run: earthly --ci +check-yaml-formatting
-  check-go-linting:
-    name: Check Go Linting
+  go-linting:
+    name: Go Linting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
@@ -60,8 +60,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Check linting.
         run: earthly --ci +check-go-linting
-  check-sh-linting:
-    name: Check Sh Linting
+  sh-linting:
+    name: Sh Linting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
