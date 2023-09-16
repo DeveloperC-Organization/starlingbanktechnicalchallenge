@@ -200,11 +200,11 @@ compile-darwin-amd64:
     DO +SAVE_OUTPUT
 
 
-unit-testing:
+unit-test:
     FROM +golang-base
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
-    RUN ./ci/unit-testing.sh
+    RUN ./ci/unit-test.sh
 
 
 releasing:
