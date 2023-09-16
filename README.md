@@ -178,16 +178,18 @@ earthly +fix-module-tidying
 ```
 
 #### Compiling
-You can compile the source code into a binary by running the command.
+You can compile the source code into a binary for an architecture by running the command.
 
 ```sh
-earthly +compiling-linux-amd64
+earthly +compile-${architecture}
 ```
 
-or
+The available architectures are `linux-amd64` and `darwin-amd64`.
+
+*E.g.*
 
 ```sh
-earthly +compiling-darwin-amd64
+earthly +compile-linux-amd64
 ```
 
 #### Unit Testing
