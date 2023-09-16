@@ -7,8 +7,8 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  check-linting:
-    name: Check Linting
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
