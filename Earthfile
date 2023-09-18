@@ -207,7 +207,7 @@ unit-test:
     RUN ./ci/unit-test.sh
 
 
-releasing:
+release:
     FROM +ubuntu-base
     RUN apt-get install wget git -y
     # Install GitHub CLI.
@@ -221,4 +221,4 @@ releasing:
     RUN tar -xzvf "git-cliff-${GIT_CLIFF_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
     RUN cp "./git-cliff-${GIT_CLIFF_VERSION}/git-cliff" /bin/git-cliff
     DO +COPY_METADATA
-    RUN --secret GH_TOKEN ./ci/releasing.sh
+    RUN --secret GH_TOKEN ./ci/release.sh
