@@ -15,7 +15,7 @@ jobs:
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check formatting.
+      - name: Check Go formatting.
         run: earthly --ci +check-go-formatting
   shell-formatting:
     name: Shell Formatting
@@ -25,7 +25,7 @@ jobs:
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check formatting.
+      - name: Check Shell formatting.
         run: earthly --ci +check-shell-formatting
   yaml-formatting:
     name: YAML Formatting
@@ -35,7 +35,7 @@ jobs:
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check formatting.
+      - name: Check YAML formatting.
         run: earthly --ci +check-yaml-formatting
   go-linting:
     name: Go Linting
@@ -45,7 +45,7 @@ jobs:
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check linting.
+      - name: Check Go linting.
         run: earthly --ci +check-go-linting
   shell-linting:
     name: Shell Linting
@@ -55,7 +55,7 @@ jobs:
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check linting.
+      - name: Check Shell linting.
         run: earthly --ci +check-shell-linting
   modules:
     name: Modules
