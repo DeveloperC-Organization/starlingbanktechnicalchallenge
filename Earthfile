@@ -84,9 +84,9 @@ sh-formatting-base:
     DO +COPY_CI_DATA
 
 
-check-sh-formatting:
+check-shell-formatting:
     FROM +sh-formatting-base
-    RUN ./ci/check-sh-formatting.sh
+    RUN ./ci/check-shell-formatting.sh
 
 
 yaml-formatting-base:
@@ -103,7 +103,7 @@ check-yaml-formatting:
 
 check-formatting:
     BUILD +check-go-formatting
-    BUILD +check-sh-formatting
+    BUILD +check-shell-formatting
     BUILD +check-yaml-formatting
 
 
@@ -115,9 +115,9 @@ fix-go-formatting:
     SAVE ARTIFACT "./src" AS LOCAL "./src"
 
 
-fix-sh-formatting:
+fix-shell-formatting:
     FROM +sh-formatting-base
-    RUN ./ci/fix-sh-formatting.sh
+    RUN ./ci/fix-shell-formatting.sh
     SAVE ARTIFACT "./ci" AS LOCAL "./ci"
 
 
@@ -129,7 +129,7 @@ fix-yaml-formatting:
 
 fix-formatting:
     BUILD +fix-go-formatting
-    BUILD +fix-sh-formatting
+    BUILD +fix-shell-formatting
     BUILD +fix-yaml-formatting
 
 
@@ -147,11 +147,11 @@ ubuntu-base:
     RUN apt-get update --fix-missing
 
 
-check-sh-linting:
+check-shell-linting:
     FROM +ubuntu-base
     RUN apt-get install shellcheck -y
     DO +COPY_CI_DATA
-    RUN ./ci/check-sh-linting.sh
+    RUN ./ci/check-shell-linting.sh
 
 
 check-github-actions-workflows-linting:
@@ -163,7 +163,7 @@ check-github-actions-workflows-linting:
 
 check-linting:
     BUILD +check-go-linting
-    BUILD +check-sh-linting
+    BUILD +check-shell-linting
     BUILD +check-github-actions-workflows-linting
 
 
