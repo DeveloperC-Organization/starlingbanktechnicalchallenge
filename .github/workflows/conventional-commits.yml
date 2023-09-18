@@ -18,7 +18,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Check commits Linting.
+      - name: Check Conventional Commits linting.
         run: earthly --ci +check-conventional-commits-linting --from_reference "origin/${{ github.base_ref }}"
   next-version:
     name: Next Version
@@ -31,5 +31,5 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Check expected vs current version.
+      - name: Check Conventional Commits next version.
         run: earthly --ci +check-conventional-commits-next-version --from_reference "origin/${{ github.base_ref }}"
