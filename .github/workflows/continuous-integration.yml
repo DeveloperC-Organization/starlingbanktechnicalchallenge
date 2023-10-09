@@ -7,7 +7,7 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  go-formatting:
+  go formatting:
     name: Go Formatting
     runs-on: ubuntu-latest
     steps:
