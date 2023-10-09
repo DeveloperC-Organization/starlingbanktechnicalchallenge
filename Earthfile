@@ -156,8 +156,8 @@ check-shell-linting:
 
 check-github-actions-workflows-linting:
     FROM +golang-base
-    RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.24
-    DO +COPY_METADATA
+    RUN go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.26
+    DO +COPY_CI_DATA
     RUN ./ci/check-github-actions-workflows-linting.sh
 
 
