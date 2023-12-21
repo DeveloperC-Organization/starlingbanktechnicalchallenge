@@ -11,7 +11,6 @@ COPY_METADATA:
     COMMAND
     DO +COPY_CI_DATA
     COPY ".git" ".git"
-    COPY "./VERSION" "./VERSION"
 
 
 rust-base:
@@ -32,14 +31,6 @@ check-conventional-commits-linting:
     DO +COPY_METADATA
     ARG from_reference="origin/HEAD"
     RUN ./ci/check-conventional-commits-linting.sh --from-reference "${from_reference}"
-
-
-check-conventional-commits-next-version:
-    FROM +rust-base
-    RUN cargo install conventional_commits_next_version --version 6.0.0
-    DO +COPY_METADATA
-    ARG from_reference="origin/HEAD"
-    RUN ./ci/check-conventional-commits-next-version.sh --from-reference "${from_reference}"
 
 
 INSTALL_DEPENDENCIES:
@@ -205,20 +196,3 @@ unit-test:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/unit-test.sh
-
-
-release:
-    FROM +ubuntu-base
-    RUN apt-get install wget git -y
-    # Install GitHub CLI.
-    ENV GH_VERSION=2.30.0
-    RUN wget "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.tar.gz"
-    RUN tar -xzvf "gh_${GH_VERSION}_linux_amd64.tar.gz"
-    RUN cp "./gh_${GH_VERSION}_linux_amd64/bin/gh" /bin/gh
-    # Install Git Cliff.
-    ENV GIT_CLIFF_VERSION=1.2.0
-    RUN wget "https://github.com/orhun/git-cliff/releases/download/v${GIT_CLIFF_VERSION}/git-cliff-${GIT_CLIFF_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
-    RUN tar -xzvf "git-cliff-${GIT_CLIFF_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
-    RUN cp "./git-cliff-${GIT_CLIFF_VERSION}/git-cliff" /bin/git-cliff
-    DO +COPY_METADATA
-    RUN --secret GH_TOKEN ./ci/release.sh

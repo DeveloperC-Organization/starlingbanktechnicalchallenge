@@ -1,0 +1,8 @@
+{
+  "changelog-type": "github",
+  "packages": {
+    ".": {
+      "release-type": "go"
+    }
+  }
+}
