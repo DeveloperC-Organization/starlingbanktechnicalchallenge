@@ -3,4 +3,4 @@
 set -o errexit
 set -o xtrace
 
-go build "./cmd/starling-bank-technical-challenge"
+goreleaser build --snapshot --clean

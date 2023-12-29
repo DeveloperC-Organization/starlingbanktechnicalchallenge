@@ -3,4 +3,4 @@
 set -o errexit
 set -o xtrace
 
-yamlfmt -dstar ./github/**/*
+yamlfmt -dstar ./github/**/* .goreleaser.yaml

@@ -5,6 +5,7 @@ COPY_CI_DATA:
     COMMAND
     COPY "./ci" "./ci"
     COPY ".github" ".github"
+    COPY ".goreleaser.yaml" ".goreleaser.yaml"
 
 
 COPY_METADATA:
@@ -45,12 +46,6 @@ COPY_SOURCECODE:
     DO +COPY_CI_DATA
     COPY "./cmd" "./cmd"
     COPY "./api" "./api"
-
-
-SAVE_OUTPUT:
-    COMMAND
-    SAVE ARTIFACT "starling-bank-technical-challenge" AS LOCAL "starling-bank-technical-challenge"
-    SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
 
 golang-base:
@@ -174,21 +169,22 @@ fix-modules:
     SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
 
-compile-linux-amd64:
+INSTALL_GORELEASER:
+    COMMAND
+    ENV GORELEASER_VERSION=1.22.1
+    RUN wget "https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz"
+    RUN tar -xzvf "goreleaser_Linux_x86_64.tar.gz"
+    RUN cp "goreleaser" /bin/goreleaser
+
+
+compile:
     FROM +golang-base
+    DO +INSTALL_GORELEASER
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/compile.sh
-    DO +SAVE_OUTPUT
-
-
-compile-darwin-amd64:
-    FROM +golang-base
-    ENV GOOS=darwin
-    DO +INSTALL_DEPENDENCIES
-    DO +COPY_SOURCECODE
-    RUN ./ci/compile.sh
-    DO +SAVE_OUTPUT
+    SAVE ARTIFACT "dist" AS LOCAL "dist"
+    SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
 
 unit-test:
