@@ -192,3 +192,21 @@ unit-test:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/unit-test.sh
+
+
+INSTALL_GITHUB_CLI:
+    COMMAND
+    ENV GITHUB_CLI_VERSION=2.30.0
+    RUN wget "https://github.com/cli/cli/releases/download/v${GITHUB_CLI_VERSION}/gh_${GITHUB_CLI_VERSION}_linux_amd64.tar.gz"
+    RUN tar -xzvf "gh_${GITHUB_CLI_VERSION}_linux_amd64.tar.gz"
+    RUN cp "./gh_${GITHUB_CLI_VERSION}_linux_amd64/bin/gh" /bin/gh
+
+
+release-artifacts:
+    FROM +ubuntu-base
+    RUN apt-get install git wget jq -y
+    DO +INSTALL_GITHUB_CLI
+    COPY +compile/dist ./dist
+    DO +COPY_METADATA
+    ARG release
+    RUN --secret GH_TOKEN ./ci/release-artifacts.sh --release "${release}"
