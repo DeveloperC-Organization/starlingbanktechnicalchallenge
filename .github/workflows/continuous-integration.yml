@@ -67,26 +67,16 @@ jobs:
         uses: actions/checkout@v3
       - name: Check modules.
         run: earthly --ci +check-modules
-  compile-darwin-amd64:
-    name: Compile Darwin AMD64
+  compile:
+    name: Compile
     runs-on: ubuntu-latest
     steps:
       - name: Download Earthly v0.7.17.
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Compile Darwin AMD64.
-        run: earthly --ci +compile-darwin-amd64
-  compile-linux-amd64:
-    name: Compile Linux AMD64
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Checkout code.
-        uses: actions/checkout@v3
-      - name: Compile Linux AMD64.
-        run: earthly --ci +compile-linux-amd64
+      - name: Compile.
+        run: earthly --ci +compile
   unit-test:
     name: Unit Test
     runs-on: ubuntu-latest
