@@ -45,9 +45,9 @@ After the access token is set we can then execute the binary to perform the roun
 E.g.
 
 ```sh
-earthly +compiling-darwin-amd64
+earthly +compile
 export ACCESS_TOKEN="123"
-./starling-bank-technical-challenge --log-level "DEBUG"
+./dist/starling-bank-technical-challenge_${architecture}/starlingbanktechnicalchallenge --log-level "DEBUG"
 ```
 
 ### Usage - Logging
@@ -178,18 +178,10 @@ earthly +fix-modules
 ```
 
 #### Compile
-You can compile the source code into a binary for an architecture by running the command.
+You can compile the source code into binaries for all supported architectures by running the command.
 
 ```sh
-earthly +compile-${architecture}
-```
-
-The available architectures are `linux-amd64` and `darwin-amd64`.
-
-*E.g.*
-
-```sh
-earthly +compile-linux-amd64
+earthly +compile
 ```
 
 #### Unit Test
