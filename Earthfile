@@ -15,7 +15,7 @@ COPY_METADATA:
 
 
 rust-base:
-    FROM rust:1.70.0
+    FROM rust
 
 
 check-clean-git-history:
