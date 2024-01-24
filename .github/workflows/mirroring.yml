@@ -2,6 +2,9 @@ name: Mirroring
 
 on: [push, delete]
 
+concurrency:
+  group: ${{ github.workflow }}
+
 jobs:
   GitLab:
     runs-on: ubuntu-latest
