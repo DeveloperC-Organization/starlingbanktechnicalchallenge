@@ -11,8 +11,8 @@ jobs:
     name: Go Formatting
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check Go formatting.
@@ -21,8 +21,8 @@ jobs:
     name: Shell Formatting
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check Shell formatting.
@@ -31,8 +31,8 @@ jobs:
     name: YAML Formatting
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check YAML formatting.
@@ -41,8 +41,8 @@ jobs:
     name: Go Linting
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check Go linting.
@@ -51,8 +51,8 @@ jobs:
     name: Shell Linting
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check Shell linting.
@@ -61,8 +61,8 @@ jobs:
     name: Modules
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Check modules.
@@ -71,8 +71,8 @@ jobs:
     name: Compile
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Compile.
@@ -81,8 +81,8 @@ jobs:
     name: Unit Test
     runs-on: ubuntu-latest
     steps:
-      - name: Download Earthly v0.7.17.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.17/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Download Earthly v0.8.1.
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
       - name: Unit test.
