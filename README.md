@@ -1,6 +1,7 @@
 # Starling Bank Technical Challenge
 ![GitHub Release](https://img.shields.io/github/v/release/DeveloperC286/starlingbanktechnicalchallenge)
 [![Continuous Integration (CI)](https://github.com/DeveloperC-Organization/starlingbanktechnicalchallenge/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/DeveloperC-Organization/starlingbanktechnicalchallenge/actions/workflows/continuous-integration.yml)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 We’d like you to develop a “round-up” feature for Starling customers using our public developer API that is available to all customers and partners.
