@@ -1,7 +1,7 @@
 {
   "changelog-type": "github",
   "release-type": "go",
-  "group-pull-request-title-pattern": "chore: release ${version}",
+  "pull-request-title-pattern": "chore: release ${version}",
   "packages": {
     ".": {}
   }
