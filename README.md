@@ -1,4 +1,5 @@
 # Starling Bank Technical Challenge
+![GitHub Release](https://img.shields.io/github/v/release/DeveloperC286/starlingbanktechnicalchallenge)
 [![Continuous Integration (CI)](https://github.com/DeveloperC-Organization/starlingbanktechnicalchallenge/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/DeveloperC-Organization/starlingbanktechnicalchallenge/actions/workflows/continuous-integration.yml)
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
