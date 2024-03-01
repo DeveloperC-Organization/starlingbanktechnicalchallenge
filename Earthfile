@@ -20,7 +20,7 @@ rust-base:
 
 check-clean-git-history:
     FROM +rust-base
-    RUN cargo install clean_git_history --version 0.1.2
+    RUN cargo install clean_git_history --version 0.1.2 --locked
     DO +COPY_METADATA
     ARG from_reference="origin/HEAD"
     RUN ./ci/check-clean-git-history.sh --from-reference "${from_reference}"
@@ -28,7 +28,7 @@ check-clean-git-history:
 
 check-conventional-commits-linting:
     FROM +rust-base
-    RUN cargo install conventional_commits_linter --version 0.12.3
+    RUN cargo install conventional_commits_linter --version 0.12.3 --locked
     DO +COPY_METADATA
     ARG from_reference="origin/HEAD"
     RUN ./ci/check-conventional-commits-linting.sh --from-reference "${from_reference}"
