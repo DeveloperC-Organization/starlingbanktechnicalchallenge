@@ -49,7 +49,7 @@ COPY_SOURCECODE:
 
 
 golang-base:
-    FROM golang:1.20.4
+    FROM golang:1.22.1
     WORKDIR /tmp/starling-bank-technical-challenge
     ENV GOPROXY=direct
     ENV CGO_ENABLED=0
