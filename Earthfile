@@ -121,7 +121,7 @@ fix-formatting:
 
 check-go-linting:
     FROM +golang-base
-    RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.0
+    RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.57.2
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/check-go-linting.sh
