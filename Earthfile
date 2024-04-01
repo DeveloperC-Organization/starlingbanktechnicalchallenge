@@ -16,6 +16,7 @@ COPY_METADATA:
 
 rust-base:
     FROM rust:1.70.0
+    WORKDIR /tmp/starling-bank-technical-challenge
 
 
 check-clean-git-history:
@@ -65,7 +66,7 @@ check-go-formatting:
 
 
 sh-formatting-base:
-    FROM golang
+    FROM +golang-base
     RUN go install mvdan.cc/sh/v3/cmd/shfmt@v3.6.0
     DO +COPY_CI_DATA
 
@@ -76,7 +77,7 @@ check-shell-formatting:
 
 
 yaml-formatting-base:
-    FROM golang
+    FROM +golang-base
     RUN go install github.com/google/yamlfmt/cmd/yamlfmt@v0.9.0
     COPY ".yamlfmt" ".yamlfmt"
     DO +COPY_CI_DATA
@@ -131,6 +132,7 @@ ubuntu-base:
     FROM ubuntu:22.04
     # https://askubuntu.com/questions/462690/what-does-apt-get-fix-missing-do-and-when-is-it-useful
     RUN apt-get update --fix-missing
+    WORKDIR /tmp/starling-bank-technical-challenge
 
 
 check-shell-linting:
