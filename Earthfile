@@ -3,15 +3,14 @@ VERSION 0.7
 
 COPY_CI_DATA:
     COMMAND
-    COPY "./ci" "./ci"
-    COPY ".github" ".github"
-    COPY ".goreleaser.yaml" ".goreleaser.yaml"
+    COPY --dir "ci/" ".github/" "./"
+    COPY ".goreleaser.yaml" "./"
 
 
 COPY_METADATA:
     COMMAND
     DO +COPY_CI_DATA
-    COPY ".git" ".git"
+    COPY --dir ".git/" "./"
 
 
 rust-base:
@@ -37,16 +36,14 @@ check-conventional-commits-linting:
 
 INSTALL_DEPENDENCIES:
     COMMAND
-    COPY "go.mod" "go.mod"
-    COPY "go.sum" "go.sum"
+    COPY "go.mod" "go.sum" "./"
     RUN go mod download
 
 
 COPY_SOURCECODE:
     COMMAND
     DO +COPY_CI_DATA
-    COPY "./cmd" "./cmd"
-    COPY "./api" "./api"
+    COPY --dir "cmd/" "api/" "./"
 
 
 golang-base:
@@ -79,7 +76,7 @@ check-shell-formatting:
 yaml-formatting-base:
     FROM +golang-base
     RUN go install github.com/google/yamlfmt/cmd/yamlfmt@v0.9.0
-    COPY ".yamlfmt" ".yamlfmt"
+    COPY ".yamlfmt" "./"
     DO +COPY_CI_DATA
 
 
@@ -208,7 +205,7 @@ release-artifacts:
     FROM +ubuntu-base
     RUN apt-get install git wget jq -y
     DO +INSTALL_GITHUB_CLI
-    COPY +compile/dist ./dist
+    COPY "+compile/dist/" "./"
     DO +COPY_METADATA
     ARG release
     RUN --secret GH_TOKEN ./ci/release-artifacts.sh --release "${release}"
