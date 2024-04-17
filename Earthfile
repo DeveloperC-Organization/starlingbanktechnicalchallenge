@@ -96,19 +96,19 @@ fix-go-formatting:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/fix-go-formatting.sh
-    SAVE ARTIFACT "./src" AS LOCAL "./src"
+    SAVE ARTIFACT "src/" AS LOCAL "src/"
 
 
 fix-shell-formatting:
     FROM +sh-formatting-base
     RUN ./ci/fix-shell-formatting.sh
-    SAVE ARTIFACT "./ci" AS LOCAL "./ci"
+    SAVE ARTIFACT "ci/" AS LOCAL "ci/"
 
 
 fix-yaml-formatting:
     FROM +yaml-formatting-base
     RUN ./ci/fix-yaml-formatting.sh
-    SAVE ARTIFACT "./.github" AS LOCAL "./.github"
+    SAVE ARTIFACT ".github/" AS LOCAL ".github/"
 
 
 fix-formatting:
@@ -182,7 +182,7 @@ compile:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/compile.sh
-    SAVE ARTIFACT "dist" AS LOCAL "dist"
+    SAVE ARTIFACT "dist/" AS LOCAL "dist/"
     SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
 
 
