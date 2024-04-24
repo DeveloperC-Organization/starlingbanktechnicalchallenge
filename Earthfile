@@ -109,6 +109,7 @@ fix-yaml-formatting:
     FROM +yaml-formatting-base
     RUN ./ci/fix-yaml-formatting.sh
     SAVE ARTIFACT ".github/" AS LOCAL ".github/"
+    SAVE ARTIFACT ".goreleaser.yaml" AS LOCAL ".goreleaser.yaml"
 
 
 fix-formatting:
