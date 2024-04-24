@@ -96,20 +96,20 @@ fix-go-formatting:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/fix-go-formatting.sh
-    SAVE ARTIFACT "src/" AS LOCAL "src/"
+    SAVE ARTIFACT "src/" AS LOCAL "./"
 
 
 fix-shell-formatting:
     FROM +sh-formatting-base
     RUN ./ci/fix-shell-formatting.sh
-    SAVE ARTIFACT "ci/" AS LOCAL "ci/"
+    SAVE ARTIFACT "ci/" AS LOCAL "./"
 
 
 fix-yaml-formatting:
     FROM +yaml-formatting-base
     RUN ./ci/fix-yaml-formatting.sh
-    SAVE ARTIFACT ".github/" AS LOCAL ".github/"
-    SAVE ARTIFACT ".goreleaser.yaml" AS LOCAL ".goreleaser.yaml"
+    SAVE ARTIFACT ".github/" AS LOCAL "./"
+    SAVE ARTIFACT ".goreleaser.yaml" AS LOCAL "./"
 
 
 fix-formatting:
@@ -165,8 +165,8 @@ fix-modules:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/fix-modules.sh
-    SAVE ARTIFACT "go.mod" AS LOCAL "go.mod"
-    SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
+    SAVE ARTIFACT "go.mod" AS LOCAL "./"
+    SAVE ARTIFACT "go.sum" AS LOCAL "./"
 
 
 INSTALL_GORELEASER:
@@ -183,8 +183,8 @@ compile:
     DO +INSTALL_DEPENDENCIES
     DO +COPY_SOURCECODE
     RUN ./ci/compile.sh
-    SAVE ARTIFACT "dist/" AS LOCAL "dist/"
-    SAVE ARTIFACT "go.sum" AS LOCAL "go.sum"
+    SAVE ARTIFACT "dist/" AS LOCAL "./"
+    SAVE ARTIFACT "go.sum" AS LOCAL "./"
 
 
 unit-test:
