@@ -7,56 +7,32 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  go-formatting:
-    name: Go Formatting
+  formatting:
+    name: Formatting
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [go, shell, yaml]
     steps:
       - name: Download Earthly v0.8.12.
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check Go formatting.
-        run: earthly --ci +check-go-formatting
-  shell-formatting:
-    name: Shell Formatting
+      - name: Check formatting.
+        run: earthly --ci +check-${{ matrix.language }}-formatting
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [go, shell]
     steps:
       - name: Download Earthly v0.8.12.
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Checkout code.
         uses: actions/checkout@v3
-      - name: Check Shell formatting.
-        run: earthly --ci +check-shell-formatting
-  yaml-formatting:
-    name: YAML Formatting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Earthly v0.8.12.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Checkout code.
-        uses: actions/checkout@v3
-      - name: Check YAML formatting.
-        run: earthly --ci +check-yaml-formatting
-  go-linting:
-    name: Go Linting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Earthly v0.8.12.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Checkout code.
-        uses: actions/checkout@v3
-      - name: Check Go linting.
-        run: earthly --ci +check-go-linting
-  shell-linting:
-    name: Shell Linting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Earthly v0.8.12.
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Checkout code.
-        uses: actions/checkout@v3
-      - name: Check Shell linting.
-        run: earthly --ci +check-shell-linting
+      - name: Check linting.
+        run: earthly --ci +check-${{ matrix.language }}-linting
   modules:
     name: Modules
     runs-on: ubuntu-latest
